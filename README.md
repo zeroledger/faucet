@@ -1,3 +1,5 @@
+[![Quality gate](https://github.com/decoy-cash/faucet/actions/workflows/quality-gate.yml/badge.svg)](https://github.com/decoy-cash/faucet/actions/workflows/quality-gate.yml)
+
 # Faucet Node
 
 A Faucet Node for Decoy protocol
