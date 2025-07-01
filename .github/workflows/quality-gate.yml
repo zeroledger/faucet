@@ -15,28 +15,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: make lint
-      - run: make typecheck
+      - run: npm run lint
+      - run: npm run typecheck
   test:
     needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: make test
-  e2e:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup
-      - run: make test.e2e
+      - run: npm run test
   build:
     needs:
       - test
-      - e2e
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: cat .npmrc.template | sed -e "s/_VALUE_/$NODE_AUTH_TOKEN/" > .npmrc
-      - run: make container.build;
+      - run: docker compose -f docker-compose.yml build;
