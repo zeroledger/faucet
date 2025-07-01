@@ -1,7 +1,7 @@
 import { Injectable, Logger } from "@nestjs/common";
 import { parseUnits } from "viem";
 import { ERC20Service } from "core/erc20/erc20.service";
-import { ERC_20_WITH_PERMIT_AND_FAUCET_ABI } from "core/erc20/erc20.abi";
+import { ERC_20_WITH_MINT_ABI } from "core/erc20/erc20.abi";
 import { MintParamsDto } from "./faucet.dto";
 import { MemoryQueueService } from "core/queue/queue.service";
 import { EvmClients } from "core/clients/evm.clients";
@@ -53,8 +53,8 @@ export class FaucetService {
         { context },
       );
     }
-    const client = this.evmClients.client;
-    const recipient = params.recipient ?? client.account.address;
+
+    const recipient = params.recipient;
     const formattedParams: {
       nativeAmount?: bigint;
       ercAmount?: bigint;
@@ -76,6 +76,7 @@ export class FaucetService {
 
     if (params.ercAmount) {
       const [symbol, userBalance, decimals] = await this.erc20Service.metadata(
+        this._faucet,
         params.token,
         recipient,
       );
@@ -114,8 +115,8 @@ export class FaucetService {
     if (formattedParams.ercAmount) {
       const { request } = await this._faucet.simulateContract({
         address: params.token,
-        abi: ERC_20_WITH_PERMIT_AND_FAUCET_ABI,
-        functionName: "faucet",
+        abi: ERC_20_WITH_MINT_ABI,
+        functionName: "mint",
         args: [recipient, formattedParams.ercAmount],
         nonce: await this._faucet.getTransactionCount(this._faucet.account),
       });

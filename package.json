@@ -1,28 +1,34 @@
 {
-  "name": "coordinator",
+  "name": "faucet",
   "version": "0.0.1",
-  "description": "Pryx coordinator node",
+  "description": "Decoy faucet node",
   "keywords": [
     "web3",
     "nestjs",
     "viem",
-    "coordinator"
+    "faucet"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pryx-protocol/coordinator.git"
+    "url": "git+https://github.com/decoy-cash/faucet.git"
   },
   "author": "Dzmitry Lahunouski",
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
-    "url": "https://github.com/pryx-protocol/coordinator/issues"
+    "url": "https://github.com/decoy-cash/faucet/issues"
   },
-  "homepage": "https://github.com/pryx-protocol/coordinator#readme",
+  "homepage": "https://github.com/decoy-cash/faucet#readme",
   "engines": {
     "node": ">=20.11.0"
   },
   "scripts": {
-    "prepare": "husky"
+    "prepare": "husky",
+    "encrypt": "dotenvx encrypt -f conf/.prod.env",
+    "build": "nest build",
+    "dev": "nest start --debug 0.0.0.0 --watch",
+    "test": "jest --passWithNoTests --detectOpenHandles --forceExit",
+    "typecheck": "tsc --noEmit --project tsconfig.json",
+    "prod": "nest start"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.19.2",
@@ -30,18 +36,10 @@
     "@nestjs/common": "^10.4.15",
     "@nestjs/config": "^3.3.0",
     "@nestjs/core": "^10.4.15",
-    "@nestjs/event-emitter": "^3.0.1",
     "@nestjs/mapped-types": "*",
     "@nestjs/microservices": "^10.4.15",
     "@nestjs/platform-express": "^10.4.15",
-    "@nestjs/schedule": "^4.1.2",
-    "@noble/secp256k1": "^2.1.0",
-    "@openzeppelin/merkle-tree": "^1.0.8",
-    "@willsoto/nestjs-prometheus": "^6.0.1",
     "axios": "^1.7.9",
-    "classic-level": "^1.4.1",
-    "node-fetch": "^3.3.2",
-    "prom-client": "^15.1.3",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
     "viem": "^2.22.1",

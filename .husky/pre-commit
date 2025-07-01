@@ -1,1 +1,2 @@
-make pre-commit
+npm run typecheck;
+npx lint-staged --help

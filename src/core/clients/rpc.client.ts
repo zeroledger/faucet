@@ -9,6 +9,6 @@ export class RpcClient extends JsonRpcClient {
     private readonly httpService: HttpService,
     private readonly emvClient: EvmClients,
   ) {
-    super(httpService.axiosRef, emvClient.client.account.address);
+    super(httpService.axiosRef, emvClient.faucetClient.account.address);
   }
 }

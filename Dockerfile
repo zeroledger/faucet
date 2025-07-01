@@ -15,14 +15,14 @@ RUN npm ci
 FROM deps as prod
 COPY . .
 ENV NODE_ENV=production
-RUN make build
+RUN npm run build
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 prod-nodejs
 USER prod-nodejs
-CMD ["make", "start.prod"]
+CMD ["npm", "run", "prod"]
 
 FROM deps as dev
 COPY . .
 EXPOSE 9229
 ENV NODE_ENV=development
-CMD ["make", "start.dev"]
+CMD ["npm", "run", "dev"]

@@ -1,8 +1,8 @@
 import type { JsonRpcResponse, ServiceClient } from "./types";
-import { randomBytes } from "@noble/hashes/utils";
-import { Hash, Hex, toHex } from "viem";
+import { Hash, Hex } from "viem";
 import type { Axios } from "axios";
 import { JsonRpcErrorResponse, JsonRpcException } from "./dto";
+import { getRandomHash } from "core/utils";
 
 const serializeResponse = <T>(
   response: JsonRpcResponse<T> | JsonRpcErrorResponse,
@@ -25,7 +25,7 @@ export class JsonRpcClient {
 
   constructor(
     private readonly axios: Axios,
-    private readonly clientId: Hex = toHex(randomBytes(32)),
+    private readonly clientId: Hex = getRandomHash(),
   ) {}
 
   getService<SvcInterface>(

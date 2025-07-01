@@ -1,6 +1,6 @@
 services:
-  coordinator:
-    hostname: coordinator
+  faucet:
+    hostname: faucet
     restart: always
     build:
       context: .
@@ -9,7 +9,7 @@ services:
     #   - SECRETS_PATH=/run/secrets/keys
     # secrets:
     #   - keys
-    command: ["make", "start.debug"]
+    command: ["npm", "run", "prod"]
     ports:
       - "9229:9229"
       - "3000:3000"
@@ -20,7 +20,6 @@ services:
         max-size: "10m"
     volumes:
       - ./src:/app/src:cached
-      - ./.db/dev0:/app/.db
       - ./conf:/app/conf:ro
 # secrets:
 #   keys:
