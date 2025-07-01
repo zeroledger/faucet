@@ -28,7 +28,8 @@
     "dev": "nest start --debug 0.0.0.0 --watch",
     "test": "jest --passWithNoTests --detectOpenHandles --forceExit",
     "typecheck": "tsc --noEmit --project tsconfig.json",
-    "prod": "nest start"
+    "prod": "nest start",
+    "lint": "eslint src/**/*.ts --fix"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.19.2",
