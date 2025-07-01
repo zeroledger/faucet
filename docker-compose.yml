@@ -1,0 +1,27 @@
+services:
+  coordinator:
+    hostname: coordinator
+    restart: always
+    build:
+      context: .
+      target: dev
+    # environment:
+    #   - SECRETS_PATH=/run/secrets/keys
+    # secrets:
+    #   - keys
+    command: ["make", "start.debug"]
+    ports:
+      - "9229:9229"
+      - "3000:3000"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "10m"
+    volumes:
+      - ./src:/app/src:cached
+      - ./.db/dev0:/app/.db
+      - ./conf:/app/conf:ro
+# secrets:
+#   keys:
+#     file: conf/.env.keys

@@ -1,0 +1,3 @@
+//npm.pkg.github.com/:_authToken=_VALUE_
+@dgma:registry=https://npm.pkg.github.com
+always-auth=true
