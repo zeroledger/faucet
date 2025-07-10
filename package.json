@@ -1,7 +1,7 @@
 {
   "name": "faucet",
   "version": "0.0.1",
-  "description": "Decoy faucet node",
+  "description": "ZeroLedger faucet node",
   "keywords": [
     "web3",
     "nestjs",
@@ -10,14 +10,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/decoy-cash/faucet.git"
+    "url": "git+https://github.com/zeroledger/faucet.git"
   },
   "author": "Dzmitry Lahunouski",
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
-    "url": "https://github.com/decoy-cash/faucet/issues"
+    "url": "https://github.com/zeroledger/faucet/issues"
   },
-  "homepage": "https://github.com/decoy-cash/faucet#readme",
+  "homepage": "https://github.com/zeroledger/faucet#readme",
   "engines": {
     "node": ">=20.11.0"
   },

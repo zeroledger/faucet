@@ -1,8 +1,8 @@
-[![Quality gate](https://github.com/decoy-cash/faucet/actions/workflows/quality-gate.yml/badge.svg)](https://github.com/decoy-cash/faucet/actions/workflows/quality-gate.yml)
+[![Quality gate](https://github.com/zeroledger/faucet/actions/workflows/quality-gate.yml/badge.svg)](https://github.com/zeroledger/faucet/actions/workflows/quality-gate.yml)
 
 # Faucet Node
 
-A Faucet Node for Decoy protocol
+A Faucet Node for ZeroLedger protocol
 
 ## Technologies
 
