@@ -19,7 +19,7 @@ RUN npm run build
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 prod-nodejs
 USER prod-nodejs
-CMD ["npm", "run", "prod"]
+CMD ["node", "dist/main"]
 
 FROM deps as dev
 COPY . .
