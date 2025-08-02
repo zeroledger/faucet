@@ -24,8 +24,8 @@ if (isProd) {
   // decrypted .prod.secrets.env file
   // more info https://github.com/dotenvx/dotenvx
   dotenvx.config({ path: process.env.SECRETS_PATH });
-  dotenvx.decrypt("conf/.prod.env");
-  dotenvx.config({ path: "conf/.prod.env" });
+  dotenvx.decrypt("conf/.prod.secrets.env");
+  dotenvx.config({ path: "conf/.prod.secrets.env" });
 }
 
 ["RPC", "NETWORK", "FAUCET_PK", "NETWORK"].forEach(requiredEnv);
