@@ -28,7 +28,7 @@ if (isProd) {
   dotenvx.config({ path: "conf/.prod.secrets.env" });
 }
 
-["RPC", "NETWORK", "FAUCET_PK", "NETWORK"].forEach(requiredEnv);
+["RPC", "NETWORK", "FAUCET_PK", "NETWORK", "ORIGIN"].forEach(requiredEnv);
 
 const supportedChains = {
   optimismSepolia: chains.optimismSepolia,

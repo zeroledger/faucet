@@ -128,7 +128,7 @@ export class JsonRpcServer extends Server implements CustomTransportStrategy {
     const app = new ExpressAdapter(express());
     app.initHttpServer({});
     app.enableCors({
-      // origin: false,
+      origin: new RegExp(process.env.ORIGIN as string),
       methods: ["GET", "POST"],
     });
     logger.debug(() => "Setup http rpc...");
