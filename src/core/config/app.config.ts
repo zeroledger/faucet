@@ -31,7 +31,8 @@ if (isProd) {
 ["RPC", "NETWORK", "FAUCET_PK", "NETWORK", "ORIGIN"].forEach(requiredEnv);
 
 const supportedChains = {
-  optimismSepolia: chains.optimismSepolia,
+  baseSepolia: chains.baseSepolia,
+  base: chains.base,
 } as const;
 
 const chainName = process.env.NETWORK as keyof typeof supportedChains;
