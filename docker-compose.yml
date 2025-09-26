@@ -1,0 +1,26 @@
+services:
+  faucet:
+    hostname: faucet
+    restart: always
+    build:
+      context: .
+      target: dev
+    # environment:
+    #   - SECRETS_PATH=/run/secrets/keys
+    # secrets:
+    #   - keys
+    command: ["npm", "run", "prod"]
+    ports:
+      - "9229:9229"
+      - "3000:3000"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "10m"
+    volumes:
+      - ./src:/app/src:cached
+      - ./conf:/app/conf:ro
+# secrets:
+#   keys:
+#     file: conf/.env.keys
