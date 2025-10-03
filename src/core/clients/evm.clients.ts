@@ -26,10 +26,7 @@ export class EvmClients implements OnApplicationShutdown {
 
   constructor(private readonly configService: ConfigService<AppConfig>) {
     const httpRpc = this.configService.getOrThrow<string[]>("httpRpc");
-    const transports: Transport[] = [
-      ...httpRpc.map((rpc) => http(rpc)),
-      http(),
-    ];
+    const transports: Transport[] = httpRpc.map((rpc) => http(rpc));
     const transport = fallback(transports);
     this.faucetClient = createWalletClient({
       account: privateKeyToAccount(
