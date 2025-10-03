@@ -184,4 +184,28 @@ export class JsonRpcServer extends Server implements CustomTransportStrategy {
     }
     await promise;
   }
+
+  /**
+   * Registers an event listener for the given event.
+   * Forwards the event subscription to the underlying HTTP server if it exists.
+   * @param event Event name
+   * @param callback Callback to be executed when the event is emitted
+   */
+  public on<EventKey extends string = string>(
+    event: EventKey,
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    callback: Function,
+  ): this {
+    if (this.server) {
+      this.server.on(event, callback as (...args: unknown[]) => void);
+    }
+    return this;
+  }
+
+  /**
+   * Returns an instance of the underlying server/broker instance.
+   */
+  public unwrap<T>(): T {
+    return this.server as T;
+  }
 }
