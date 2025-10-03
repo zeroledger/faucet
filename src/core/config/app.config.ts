@@ -33,6 +33,7 @@ if (isProd) {
 const supportedChains = {
   baseSepolia: chains.baseSepolia,
   base: chains.base,
+  hardhat: chains.hardhat,
 } as const;
 
 const chainName = process.env.NETWORK as keyof typeof supportedChains;
