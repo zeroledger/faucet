@@ -30,15 +30,15 @@ if (isProd) {
 
 ["RPC", "NETWORK", "FAUCET_PK", "NETWORK", "ORIGIN"].forEach(requiredEnv);
 
-const hardhatBaseFork = {
+const hardhatBaseSepoliaFork = {
   ...chains.hardhat,
-  contracts: chains.base.contracts,
+  contracts: chains.baseSepolia.contracts,
 };
 
 const supportedChains = {
   baseSepolia: chains.baseSepolia,
   base: chains.base,
-  hardhatBaseFork,
+  hardhatBaseSepoliaFork,
 } as const;
 
 const chainName = process.env.NETWORK as keyof typeof supportedChains;
