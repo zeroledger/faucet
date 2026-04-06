@@ -64,7 +64,7 @@ export class FaucetService {
       const userBalance = await this._faucet.getBalance({ address: recipient });
       Logger.log(`Account native balance: ${userBalance}`, context);
       formattedParams.nativeAmount = nativeAmount;
-      if (nativeAmount > 1000000000000000n) {
+      if (nativeAmount > parseUnits("0.1", 18)) {
         throw new JsonRpcException(
           "REQUESTED_NATIVE_AMOUNT_TOO_BIG",
           JsonRpcExceptionCodes.INVALID_PARAMS,
@@ -105,7 +105,7 @@ export class FaucetService {
     const report: { nativeDepositReceipt?: any; ercDepositReceipt?: any } = {};
     if (
       formattedParams.nativeAmount &&
-      formattedParams.nativeAmount < 1000000000000000n &&
+      formattedParams.nativeAmount < parseUnits("0.1", 18) + 1n &&
       formattedParams.nativeAmount > 10000000000000n
     ) {
       const hash = await this._faucet.sendTransaction({
