@@ -1,4 +1,3 @@
-import * as dotenvx from "@dotenvx/dotenvx";
 import { Address, type Hex } from "viem";
 import * as chains from "viem/chains";
 
@@ -14,19 +13,6 @@ if (!process.env.NODE_ENV) {
 
 const isProd = process.env.NODE_ENV === "production";
 const isDev = process.env.NODE_ENV === "development";
-
-if (isDev) {
-  dotenvx.config({ path: "conf/.env" });
-}
-
-if (isProd) {
-  // ignore .env
-  // decrypted .prod.secrets.env file
-  // more info https://github.com/dotenvx/dotenvx
-  dotenvx.config({ path: process.env.SECRETS_PATH });
-  dotenvx.decrypt("conf/.prod.secrets.env");
-  dotenvx.config({ path: "conf/.prod.secrets.env" });
-}
 
 ["RPC", "NETWORK", "FAUCET_PK", "NETWORK", "ORIGIN"].forEach(requiredEnv);
 
