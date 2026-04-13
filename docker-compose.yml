@@ -5,10 +5,6 @@ services:
     build:
       context: .
       target: dev
-    # environment:
-    #   - SECRETS_PATH=/run/secrets/keys
-    # secrets:
-    #   - keys
     command: ["npm", "run", "prod"]
     ports:
       - "9229:9229"
@@ -20,7 +16,3 @@ services:
         max-size: "10m"
     volumes:
       - ./src:/app/src:cached
-      - ./conf:/app/conf:ro
-# secrets:
-#   keys:
-#     file: conf/.env.keys
