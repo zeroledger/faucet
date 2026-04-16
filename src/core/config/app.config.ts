@@ -16,15 +16,15 @@ const isDev = process.env.NODE_ENV === "development";
 
 ["RPC", "NETWORK", "FAUCET_PK", "NETWORK", "ORIGIN"].forEach(requiredEnv);
 
-const hardhatBaseSepoliaFork = {
+const hardhatBaseFork = {
   ...chains.hardhat,
-  contracts: chains.baseSepolia.contracts,
+  contracts: chains.base.contracts,
 };
 
 const supportedChains = {
   baseSepolia: chains.baseSepolia,
   base: chains.base,
-  hardhatBaseSepoliaFork,
+  hardhatBaseFork,
 } as const;
 
 const chainName = process.env.NETWORK as keyof typeof supportedChains;
